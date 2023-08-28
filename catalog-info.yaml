@@ -1,0 +1,46 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ordersx2w-app
+  annotations:
+    argocd/app-name: ordersx2w-app
+    backstage.io/kubernetes-id: ordersx2w-app
+    backstage.io/kubernetes-namespace: devhub
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: devhub-mad/ordersx2w-app
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - java
+    - quarkus
+    - maven
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.cluster-gjtwp.gjtwp.sandbox221.opentlc.com/dev-pipelines/ns/devhub/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.cluster-gjtwp.gjtwp.sandbox221.opentlc.com/k8s/ns/devhub/deployments/ordersx2w-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.cluster-gjtwp.gjtwp.sandbox221.opentlc.com/#https://github.com/devhub-mad/ordersx2w-app?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/varodrig"
+  system: workshop-system-ordersx2w-app
+  providesApis:
+    - backend-api-devhub
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-ordersx2w-app
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+spec:
+  owner: "user:default/varodrig"
+
